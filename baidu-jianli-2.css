@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+}
+.header {
+    float: left;
+    width: 13%;
+    background: rgba(95,107,255,1);
+    color: #eeeeee;
+    height: 615px;
+    margin-right: 2%;
+}
+.header p {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+.content {
+    float: right;
+    width: 83%;
+}
+.item {
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
+.item .title {
+    font-size: 18px;
+    font-weight: bolder;
+
+}
+.item .distance {
+    width: 20%;
+}
+.item .distance,
+.item .distance p{
+    display: inline-block;
+}
+.item .cblod{
+    font-weight: bold;
+}
+.status {
+    margin-top: 15px;
+}
+.first p,
+.second p{
+    margin-bottom: 0px;
+    margin-top: 0px;
+}

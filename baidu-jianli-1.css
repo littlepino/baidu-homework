@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+}
+.header p {
+    font-size: 25px;
+    font-weight: bold;
+}
+.item {
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
+.item .title {
+    font-size: 18px;
+    font-weight: bolder;
+
+}
+.item .distance {
+    width: 15%;
+}
+.item .distance,
+.item .distance p{
+    display: inline-block;
+}
+.item .cblod{
+    font-weight: bold;
+}
+.status {
+   margin-top: 15px;
+}
+.first p,
+.second p{
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
