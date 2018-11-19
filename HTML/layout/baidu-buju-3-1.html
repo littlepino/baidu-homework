@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>三栏布局之float</title>
     <style>
-        /* 圣杯布局 main在结构的前面
+        /* 圣杯布局 要求main最先渲染，所以main结构写在最前面
         body {
             margin: 0;
         }
@@ -16,7 +16,7 @@
         }
         .container {
             margin: 0 auto;
-            padding: 0 220px 0 200px;
+            padding: 0 220px 0 200px;/* 即main的宽度为100%时，显示的位置，左右内边距为两侧的宽度 */
         }
         .left,
         .right,
