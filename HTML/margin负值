@@ -1,0 +1,99 @@
+margin即为外边距，当margin的值为负数时，有以下的特性
+1.对自身的影响
+   当元素不存在width属性或者width:auto的时候，负值margin会增加元素的宽度，但是，margin-top为负值时，会使元素往上移动，
+margin-bottom为负值时，会减少浏览器呈现的高度。
+2.对文档流的影响
+   元素如果用了margin-left:-20px，毋庸置疑的自身会向左偏移20px和定位(position:relative)有点不一样，在后面的元素会补位，
+也就是会紧跟着此元素的后面。
+   总结：不脱离文档流，不适用float的话，负margin元素时不会破坏页面的文档流(所以使用负margin往上移动一个元素，后面也会上移)。
+3.对浮动元素的影响
+   负margin会改变浮动元素的显示位置，即使我的元素写在DOM的后面，也能让他显示在前面。圣杯布局和双飞翼布局都是利用这个原理。
+   (注:会覆盖之前位置的元素)
+4.对绝对定位的影响
+   对于对于绝对定位元素，负margin会基于其绝对定位坐标再偏移，唯有的缺点就是你必须知道这个觉得定位元素宽度的和高度才能并设置，
+负margin值使其居中浏览器窗口，
+   如 div{position: absolute;top:50%; left:50%; width: 200px; height: 200px;
+          margin-top: -100px;margin-left: -100px;}
+
+小应用：
+ 每一排的最后一个对齐父元素的有边框
+ <div class="container">
+    <ul class="list">
+        <li>我是一个列表</li>
+        <li>我是一个列表</li>
+        <li>我是一个列表</li>
+        <li>我是一个列表</li>
+        <li>我是一个列表</li>
+        <li>我是一个列表</li>
+        <li>我是一个列表</li>
+        <li>我是一个列表</li>
+        <li>我是一个列表</li>
+        <li>我是一个列表</li>
+    </ul>
+</div>
+
+.container{
+        margin:0 auto;
+        width: 500px;
+        border: 1px #ccc solid;
+        margin-bottom: 20px;
+}
+.list{
+    overflow: hidden;
+    margin-right: -10px;
+
+}
+.list li{
+    width:92px;
+    height: 92px;
+    background-color: #ccc;
+    margin-bottom: 20px;
+    float: left;
+    margin-right: 10px;
+} 
+计算公式：
+假设一横列展示的数量为x，元素见的间距为y，父距宽度z
+则元素的宽度＝（z－y（x－1））/x
+本例中li的宽度为（500－10（5-1））/5=92
+
+去除列表最后一个li元素的border-bottom
+
+    很多情况下，我们会用li标签来模拟表格，再给li标签添加下边距的时候，最后一个li标签表格会和父元素的边框靠在一起，
+会显得整个“table”的底部边框会比其他的边粗一些！
+下面添加一个margin-bottom:-1px;的属性,就可以使其看起来更完美
+<style>
+    ul.table{
+        border:1px #ccc solid;
+        margin-top:100px;
+    }
+    ul.table li{
+        border-bottom: 1px #ccc solid;
+        list-style: none;
+        margin-bottom: -1px;
+    }
+    </style>
+    <ul class="table"> 
+        <li>I am li</li>
+        <li>I am li</li>
+        <li>I am li</li>
+        <li>I am li</li>
+        <li>I am li</li>
+    </ul>
+
+多列等高
+
+    利用margin-bottom为负值会减少css读取元素高度的特性，加上padding-bottom和(父元素)overflow:hidden,就能做一个未知高度的多列
+等高布局（当然也可以用table），相当于margin-bottom和padding-bottom在视觉上相互抵消，父元素overflow: hidden,以最高的高度进行裁
+切，所以看起来就会等高
+
+
+
+
+
+
+
+
+作者：琦乐无穷
+链接：https://www.jianshu.com/p/549aaa5fabaa
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
