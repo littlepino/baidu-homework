@@ -15,8 +15,8 @@
             border: 2px solid black;
         }
         .container {
-            margin: 0 auto;
-            padding: 0 220px 0 200px;/* 即main的宽度为100%时，显示的位置，左右内边距为两侧的宽度 */
+            margin: 0 auto; /*水平居中*/
+            padding: 0 220px 0 200px;/* 即main的宽度为100%时显示的位置，左右内边距为两侧的宽度 */
         }
         .left,
         .right,
@@ -28,8 +28,8 @@
         .left {
             width: 200px;
             background-color: red;
-            margin-left: -100%;
-            left: -200px;
+            margin-left: -100%; /* 负值为100%时，可使元素向上移动，具体位置为left的左边框到main的右边框，main的100%的宽度 */
+            left: -200px; /* 元素被positioned，left定位 */
 
         }
         .main {
@@ -39,7 +39,7 @@
         .right {
             width: 220px;
             background-color: green;
-            margin-left: -220px;
+            margin-left: -220px; /*同上*/
             right: -220px;
         }*/
 
@@ -56,9 +56,9 @@
             margin-left: -100%;
 
         }
-        .main {
+        .main {                    /* main在dom元素最上面，且继承了父亲的宽度，所以会把left和right挤到下面去 */
             background-color: blue;
-            margin: 0 220px 0 200px;
+            margin: 0 220px 0 200px;/* 外边距距离即为left和right的宽度 */
 
         }
         .right {
