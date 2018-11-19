@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        /* float+ calc方法左侧固定，右侧自适应
+        .left {
+            float: left;
+            width: 200px;
+            background-color: red;
+            height: 200px;
+
+        }
+        .right {
+            background-color: blue;
+            height: 200px;
+            float: right;
+            width: calc(100% - 200px);
+        }*/
+        /* flex左侧固定，右侧自适应
+        .container {
+            display: flex;
+        }
+        .left {
+            flex: 0 0 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .right {
+            flex: 1;
+            height: 200px;
+            background-color: blue;
+        }*/
+        /*右侧固定，左侧自适应
+        .container {
+            display: flex;
+        }
+        .left {
+            flex: 1;
+            height: 200px;
+            background-color: red;
+        }
+        .right {
+            flex: 0 0 200px;
+            height: 200px;
+            background-color: blue;
+        }*/
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="left">affas我想看看这句话的流畅性，是不是自适应的宽度，我来看看，下一个，然后呢，123456789我想看看这句话的流畅性，是不是自适应的宽度，我来看看，下一个，然后呢，123456789</div>
+        <div class="right">我想看看这句话的流畅性，是不是自适应的宽度，我来看看，下一个，然后呢，123456789</div>
+    </div>
+
+</body>
+</html>

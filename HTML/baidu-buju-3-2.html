@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        /* float+ocla左侧固定，中间固定，右侧自适应变化
+        .left,.main {
+            float: left;
+            width: 220px;
+            height: 400px;
+        }
+        .left {
+            background-color: red;
+        }
+        .main {
+            background-color: blue;
+        }
+        .right {
+            width: calc(100% - 440px);
+            float: right;
+            height: 400px;
+            background-color: green;
+            margin-left: -220px;
+        }*/
+        /*position absolute左中固定，右自适应
+        .left,.main {
+            position: absolute;
+            width: 300px;
+            height: 400px;
+            top: 0;
+        }
+        .left {
+            left: 0;
+            background-color: red;
+            margin-right: 0;
+        }
+        .main {
+            left: 300px;
+            background-color: blue;
+
+        }
+        .right {
+            position: absolute;
+            background-color: green;
+            min-height: 400px;
+            left: 600px;
+            overflow: auto;
+
+        }*/
+        /*flex实现
+        .container {
+            display: flex;
+            min-width: 800px;
+        }
+        .left,.main {
+            flex: 0 0 250px;
+            min-height: 300px;
+        }
+        .left {
+            background-color: red;
+        }
+        .main {
+            background-color: blue;
+        }
+        .right {
+            flex: 1;
+            min-height: 300px;
+            background-color: green;
+        }*/
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="left">我是左侧</div>
+    <div class="main">鄙人在中,我在填充内容，我到这里，是不是感觉很有成就感？但是很遗憾的告诉你，还没结束哦！
+        我们现在的确是硬性的实现了固比固布局。但是要记住，中间盒子是自适应的宽度，所以中间盒子里的内容会被左右盒子给压住一部分。
+        比如现在我给中间盒子加很多的内容，大家看看效果图</div>
+    <div class="right">哥哥在右,在填充内容，我到这里，是不是感觉很有成就感？但是很遗憾的告诉你，还没结束哦！
+        我们现在的确是硬性的实现了固比固布局。但是要记住，中间盒子是自适应的宽度，所以中间盒子里的内容会被左右盒子给压住一部分。
+        比如现在我给中间盒子加很多的内容，大家看看效果图</div>
+</div>
+
+</body>
+</html>

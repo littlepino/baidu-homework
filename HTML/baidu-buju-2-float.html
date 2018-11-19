@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>两栏布局float</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        /* 左侧固定，右侧根据浏览器宽度自适应 */
+        /*  .left {
+             background-color: red;    关键点 1.先让固定宽度的div浮动，使其脱离文档流。
+             width: 300px;                   2.margin-left的值等于固定div的宽度相等
+             float: left;
+             min-height: 700px;
+         }
+         .right {
+             height: 700px;
+             background-color: blue;
+             margin-left: 300   px;
+
+         }*/
+        /* 右侧固定，左侧自适应 */
+        .right  {
+            width: 300px;
+            float: right;
+            background-color: blue;
+            height: 200px;
+            margin-top: -200px;
+        }
+        .left {
+            margin-right: 300px;
+            background-color: red;
+            height: 200px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="left">affas</div>
+<div class="right">我想看看这句话的流畅性，是不是自适应的宽度，我来看看，下一个，然后呢，123456789</div>
+</body>
+</html>
