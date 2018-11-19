@@ -1,1 +1,6 @@
-
+两栏布局，一侧固定，一侧自适应。
+html代码如下
+<div class="left"><div>
+<div class="right"><div>
+float方法
+left设置float属性和固定宽度，right可使用margin-left，值为left的固定宽度值，然后使用margin-top
