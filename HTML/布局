@@ -26,3 +26,40 @@ flex方法
 
 
 三栏布局，左 右固定，中间自适应
+html代码
+<div class="container>
+<div class="main"></div>
+<div class="left"></div>
+<div class="right"></div>
+</div>
+float+margin方法
+    首先给main,left,right加上float: left；左右固定宽度，main继承父元素的宽度，且在dom结构前面，所以最开始时会将left和right挤到下面，
+将left: margin-left: -100%,right: margin-left: "right.width"，使其移动到于继承了父亲的main上，这时会覆盖main的两侧内容，所以将main
+设置外边距，margin: 0 "left.width" 0 "right.width"
+
+position方法
+    首先将left和right绝对定位，设置位置为top: 0; left: 0和right: 0,因为为绝对定位，main在原层显示时，会被left和right遮挡住两侧部分
+内容，所以再给main设置外边距同上，就可以了。
+
+flex方法
+   flex方法同两列布局基本一致，但是要对DOM结构不同的页面，需要设置left,main,right的order值，order值越小的div会在前面显示，本例子中，
+order值分别为，0，1，2
+
+三栏布局，左中固定，右侧自适应
+html代码
+<div class="container>
+<div class="left"></div>
+<div class="main"></div>
+<div class="right"></div>
+</div>
+
+float方法
+left和main加上float: left,right会围绕在右侧显示，只需要添加margin-left: "left.width+main.width"
+float+ocla方法
+left和main加上float: left,right利用ocla计算剩余宽度，即(100% - "left.width+main.width"),然后用float:right属性右浮动
+
+position方法实现
+三者绝对定位，left和main设置top: 0 left: 0和top: 0,left: "left.width"，right设置left: "left.width+main.width"
+
+flex方法实现
+同二栏和另以三栏布局基本一样
