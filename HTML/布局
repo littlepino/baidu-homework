@@ -1,6 +1,28 @@
 两栏布局，一侧固定，一侧自适应。
 html代码如下
+<div class="container>
 <div class="left"><div>
 <div class="right"><div>
+</div>
 float方法
-left设置float属性和固定宽度，right可使用margin-left，值为left的固定宽度值，然后使用margin-top
+左侧固定，右侧自适应
+left设置float:left属性和固定宽度，right可使用margin-left，值为left的固定宽度值，
+右侧固定，左侧自适应
+right设置float:right属性和固定宽度，left可使用margin-right，值为left的固定宽度值.(注：如果DOM顺序相反，可使用margin-top使元素向上移动)
+补充，float+calc函数方法
+left设置不变，right设置float：right，width：calc(100% - "left.width")
+
+position方法
+左侧固定，右侧自适应
+left,right都设置position: absolute属性，right设置right: 0;left: "left.width"
+右侧固定，左侧自适应
+left,right都设置position: absolute属性，right设置right: 0，left设置left: 0;right: "right.width"
+
+flex方法
+左侧固定，右侧自适应
+首先container设置display: flex,然后left: flex: 0 0 200px,right: flex: 1;
+右侧固定，左侧自适应
+首先container设置display: flex,然后left: flex: 1,right: flex: 0 0 200px;
+
+
+三栏布局，左 右固定，中间自适应
