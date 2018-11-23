@@ -1,0 +1,448 @@
+body {
+    margin: 0;
+}
+/* 头部部分*/
+.header {
+    width: 100%;
+    height: 993px;
+    background-image: url("../practice/img/header.png");/* 背景图片填充 */
+}
+.title {
+    font-size: 62px;
+    color: rgb(255, 255, 255);
+    line-height: 1.161;
+    text-align: center;
+    position: absolute;
+    left: 600px;
+    top: 200px;
+
+    height: 48px;
+    z-index: 257;
+}
+.text {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.702);
+    line-height: 1.6;
+    text-align: center;
+    position: absolute;
+    left: 398.721px;
+    top: 372.198px;
+    width: 766px;
+    height: 84px;
+    z-index: 258;
+}
+.Placeholder {
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 2px;
+    position: absolute;
+    left: 315px;
+    top: 530px;
+    width: 968px;
+    height: 248px;
+    z-index: 240;
+}
+.titletwo {
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    line-height: 1.75;
+    text-align: center;
+    position: absolute;
+    top: 50px;
+    left: 370px;
+    z-index: 258;
+}
+.about {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.302);
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-align: center;
+    position: absolute;
+    left: 395px;
+    top: 95px;
+    z-index: 254;
+}
+.Input_Field {
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 2px;
+    position: absolute;
+    left: 415px;
+    top: 678px;
+    width: 290px;
+    height: 48px;
+    z-index: 250;
+}
+.submit {
+    line-height: 248px;
+    margin-top: 40px;
+    margin-left: 180px;
+}
+input {
+    font-size: 14px;
+    color: rgb(255,255,255);
+    width: 250px;
+    height: 3em;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 2px;
+    background-color: transparent;
+    margin-right: 15px;
+}
+.submit button {
+    height: 43px;
+    width: 120px;
+}
+/* 导航栏 */
+.nav {
+    height: 710px;
+}
+.p1 {
+    font-size: 14px;
+    color: rgb(20, 20, 20);
+    text-transform: uppercase;
+    line-height: 2;
+    text-align: center;
+    margin-top: 80px;
+}
+.p2 {
+    font-size: 42px;
+    line-height: 1.238;
+    text-align: center;
+    width: 800px;
+    height: 93px;
+    margin-left: 360px;
+}
+.content-one,
+.content-two{
+    display: flex;
+    margin: 100px auto;
+    width: 1000px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.logo:nth-child(2){
+    margin-right: 0;
+}
+.logo {
+    flex: 0 0 400px;
+    margin-right: 200px;
+}
+.logo img {
+    float: left;
+    margin-right: 20px;
+}
+.logo .article {
+    overflow: auto;
+}
+.article h3 {
+    margin-top: 0;
+    font-size: 20px;
+    color: rgb(20, 20, 20);
+    line-height: 1.6;
+}
+.article p {
+    font-size: 16px;
+    color: rgba(20, 20, 20, 0.702);
+    line-height: 1.625;
+}
+
+/*中间层部分*/
+.middle {
+    width: 100%;
+    height: 799px;
+    background-image: url("../practice/img/middle.png");
+}
+.middle-content {
+    float: left;
+    margin-top: 250px;
+    margin-left: 270px;
+}
+
+.middle h1 {
+    width: 420px;
+    font-size: 42px;
+    color: rgb(255, 255, 255);
+    line-height: 1.238;
+}
+.middle p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.702);
+    line-height: 1.556;
+    width: 400px;
+}
+.middle-content button {
+    border-radius: 2px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 30px;
+    margin-right: 15px;
+    width: 200px;
+    height: 50px;
+}
+.middle-content .bu-tran {
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    background-color: transparent;
+}
+.middle-ipad {
+    float: right;
+    margin-top: 150px;
+    box-sizing: border-box;
+    width: 645px;
+    height: 600px;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.circle {
+    float: left;
+    width: 10px;
+    height: 10px;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 10px;
+    margin-top: 290px;
+    margin-left: 30px;
+}
+.middle-ipad-content {
+    width: 574px;
+    height: 538px;
+    background-image: url("../practice/img/right.png");
+    margin-top: 30px;
+    margin-left: 70px;
+}
+/* products部分 */
+.products {
+    height: 500px;
+}
+.products-title {
+    font-size: 42px;
+    color: rgb(20, 20, 20);
+    line-height: 1.238;
+    text-align: center;
+    margin-top: 80px;
+}
+.products-text {
+    box-sizing: border-box;
+    display: flex;
+    margin-left: 300px;
+    margin-top: 100px;
+}
+.products-text .products-text-logo {
+    flex: 1;
+}
+.products-text-logo p {
+    font-size: 16px;
+    color: rgba(20, 20, 20, 0.702);
+    line-height: 1.625;
+    width: 250px;
+}
+/* learn部分 */
+.learn {
+    height: 1000px;
+}
+.learn-top img {
+    float: left;
+    margin-top: 90px;
+    margin-right: 50px;
+    margin-left: 300px;
+}
+.learn-top .learn-text {
+    float: left;
+    width: 310px;
+    margin-top: 180px;
+    margin-left: 30px ;
+
+}
+.learn-bottom img {
+    float: right;
+    margin-top: 100px;
+    margin-right: 250px;
+}
+.learn-bottom .learn-text {
+    width: 320px;
+    float: left;
+    margin-left: 300px;
+    margin-top: 180px;
+}
+.clear {
+    clear: both;
+}
+/* person部分 */
+.person-text {
+    text-align: center;
+}
+.person-text h3 {
+    font-size: 42px;
+    color: rgb(20, 20, 20);
+    line-height: 1.238;
+}
+.person-text p {
+    font-size: 18px;
+    color: rgba(20, 20, 20, 0.702);
+    line-height: 1.556;
+    width: 695px;
+    margin: 0 auto;
+}
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 100px 200px 100px 300px;
+    justify-content: space-between;
+}
+.person-own {
+    flex: 0 1 400px;
+    margin-right: 100px;
+    position: relative; /*遮罩层父元素要相对定位*/
+
+}
+.person-own img {
+    width: 400px;
+    height: 340px;
+
+}
+.person-own:hover .list-bac {
+    opacity: 0.71;
+}
+.list-bac {
+    position: absolute;/* 遮罩层本身要绝对定位 */
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 340px;
+    background-color: rgba(20,20,20,0.651);
+    opacity: 0;
+
+}
+
+.list-bac-text {
+    text-align: center;
+    padding-top: 80px;
+}
+.list-bac-text h1 {
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    line-height: 1.6;
+}
+.list-bac-text p {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    line-height: 2.333;
+}
+.list-bac img {
+    width: 51px;
+    height: 54px;
+    float: left;
+    margin-right: 20px;
+}
+.list-bac-logo {
+    margin-top: 30px;
+    margin-left: 100px;
+}
+
+/* contact */
+.contact {
+    display: flex;
+    margin: 100px 200px;
+}
+.count {
+    flex: 1;
+    border: 1px solid rgba(20,20,20,0.1);
+    width: 500px;
+    height: 600px;
+
+}
+.count p {
+    text-align: center;
+    color: rgb(20, 20, 20);
+    line-height: 2;
+}
+.count input {
+    border: 1px solid rgba(20,20,20,0.1);
+    margin-top: 50px;
+    margin-left: 130px;
+}
+.count textarea {
+    border: 1px solid rgba(20,20,20,0.1);
+    width: 350px;
+    height: 150px;
+    margin-top: 50px;
+    margin-left: 80px;
+    font-size: 16px;
+    color: rgba(20,20,20,0.8);
+}
+.count button {
+    color: white;
+    width: 350px;
+    height: 40px;
+    margin-top: 20px;
+    margin-left: 80px;
+    background-color: rgb(20,20,20);
+    letter-spacing: 3px;
+}
+.address {
+    flex: 1;
+    width: 500px;
+    margin-left: 150px;
+}
+.address-logo {
+    margin-top: 80px;
+}
+.address p {
+    width: 370px;
+}
+.address-list img{
+    float: left;
+    margin-right: 15px;
+}
+.address-list-log p {
+    margin-top: 10px;
+}
+.address-list-log {
+    margin-bottom: 40px;
+}
+/* footer部分*/
+.footer {
+    display: flex;
+    background-color: rgb(20, 20, 20);
+    padding: 40px 100px;
+}
+.footer-list {
+    flex: 1;
+}
+.footer-list h3 {
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    line-height: 2;
+    text-align: left;
+}
+.footer-list p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.556;
+    text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
