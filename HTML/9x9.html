@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="p1" onclick="son()">来看看，我是谁</p>
+<button id="btn" onclick="changeName()">别点我查看，点上面</button>
+<script>
+    function changeName() {
+        var name=document.getElementById("p1");
+        name.innerHTML="没错，我是你爹";
+    }
+    function son() {
+        var name=document.getElementById("p1");
+        name.innerHTML="你点你爹呢，崽种";
+    }
+    function getAvg() {
+        var sum=0;
+        for (var i=0;i<arguments.length;i++){
+            sum+=arguments[i];
+            console.log(sum);
+        }
+        return avg=sum/arguments.length;
+    }
+    console.log(getAvg(8,9,10));
+    var arr=new Array(3,4);
+    console.log(arr[1[]]);
+</script>
+</body>
+</html>
