@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    select {
+        display: none;
+    }
+    .palette {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .palette li {
+        width: 40px;
+        height: 40px;
+        border: 1px solid #000;
+        cursor: pointer;
+    }
+</style>
+<body>
+<!--day20的第一个例子-->
+<!--<input id="name" type="text" onkeydown="key(event)">
+<button id="submit-btn">Submit</button>-->
+
+<!--day20的第二个例子-->
+<!--<label>
+    <input id="school" name="status" type="radio" onclick="selec()">
+    School
+</label>
+<label>
+    <input id="company" name="status" type="radio" onclick="selec()">
+    Company
+</label>
+
+<select id="school-select">
+    <option>北京邮电大学</option>
+    <option>黑龙江大学</option>
+    <option>华中科技大学</option>
+</select>
+
+<select id="company-select">
+    <option>百度</option>
+    <option>爱奇艺</option>
+</select>-->
+<ul class="palette">
+    <li style="background-color:crimson"></li>
+    <li style="background-color:bisque"></li>
+    <li style="background-color:blueviolet"></li>
+    <li style="background-color:coral"></li>
+    <li style="background-color:chartreuse"></li>
+    <li style="background-color:darkolivegreen"></li>
+    <li style="background-color:cyan"></li>
+    <li style="background-color:#194738"></li>
+</ul>
+
+<p class="color-picker"></p>
+<script>
+    /* day20的第一个例子的js代码 */
+    /*var chan=document.getElementById("name");
+    var btn=document.getElementById("submit-btn");
+    function key(event) {   //event是存储了发生的事件的状态等信息
+        if (event.keyCode==13){
+            console.log(chan.value);
+        } else if (event.keyCode==27) {
+            chan.value="";
+        }
+    }
+    function con() {
+        console.log(chan.value);
+    }
+    btn.onclick=con;*/
+    /* day20的第二个js代码 */
+    /*function selec() {
+        var x=document.getElementsByName("status");
+        var m=document.getElementById("school-select");
+        var n=document.getElementById("company-select");
+        if (x[0].checked==true){
+            m.style.display="block";
+            n.style.display="none";
+         }else if (x[1].checked){
+            m.style.display="none";
+            n.style.display="block";
+        }
+
+    }
+    selec();*/
+   /* var list = document.querySelectorAll("li");
+    for (var i = i = 0, len = list.length; i < len; i++) {
+        list[i].onclick = function(e) {
+            var t = e.target;
+            var c = t.style.backgroundColor;
+            var p = document.getElementsByClassName("color-picker")[0];
+            p.innerHTML = c;
+            p.style.color = c;
+
+        }
+    }*/
+    var ul=document.getElementsByClassName("palette");
+    ul[0].onclick=function (event) {
+        var ev = event;
+        var target = ev.target;
+        if (target.nodeName.toLowerCase() == "li"){
+          var c = target.style.backgroundColor;
+          var p = document.getElementsByClassName("color-picker")[0];
+          p.innerHTML = c;
+          p.style.color = c;
+
+        }
+    }
+</script>
+</body>
+</html>
