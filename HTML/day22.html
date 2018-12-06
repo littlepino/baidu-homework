@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- Number部分 -->
+<!--<div>
+    <label>Number A:<input id="radio-a" type="radio" name="math-obj" value="a"></label><input id="num-a" type="text">
+    <label>Number B:<input id="radio-b" type="radio" name="math-obj" value="b"></label><input id="num-b" type="text">
+</div>
+<div>
+    <button id="one" onclick="isnumber()">判断当前选中的输入框输入内容是否为数字</button>
+    <button id="two" onclick="float()">把 A 四舍五入为 B 个小数位数的数字</button>
+    <button id="three" onclick="add()">当前选中数字的绝对值</button>
+    <button id="four" onclick="ceil()">对当前选中的数字进行上舍入</button>
+    <button id="five" onclick="floor()">对当前选中的数字进行下舍入</button>
+    <button id="six" onclick="round()">把当前选中的数字四舍五入为最接近的整数</button>
+    <button id="seven" onclick="max()">返回 A 和 B 中的最高值</button>
+    <button id="eight" onclick="min()">返回 A 和 B 中的最低值</button>
+</div>
+<p id="result"></p>-->
+<!--String部分-->
+<div>
+    <label>String A:
+        <input id="radio-a" type="radio" checked="true" name="str-obj" value="a">
+    </label>
+    <textarea id="str-a"></textarea>
+    <label>String B:
+        <input id="radio-b" type="radio" name="str-obj" value="b">
+    </label>
+    <textarea id="str-b"></textarea>
+    <label>Num A：<input id="num-a" type="number" value="0"></label>
+    <label>Num B：<input id="num-b" type="number" value="1"></label>
+</div>
+<div>
+    <button onclick="leng()">获取当前选中输入的内容长度</button>
+    <button onclick="third()">当前选中输入中的第3个字符</button>
+    <button onclick="contact()">把两个输入框的文字连接在一起输出（concat）</button>
+    <button onclick="BA()">输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）</button>
+    <button onclick="AB()">输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）</button>
+    <button onclick="slice()">使用slice获取选中输入框内容的部分内容，参数为num-a及num-b</button>
+    <button onclick="split()">当前选中输入框的行数</button>
+    <button onclick="substr()">使用substr获取选中输入框内容的子字符串，参数为num-a及num-b</button>
+    <button onclick="uppercase()">把所选输入框中的内容全部转为大写</button>
+    <button onclick="lowercase()">把所选输入框中的内容全部转为小写</button>
+    <button onclick="trim()">把所选输入框中内容的半角空格全部去除</button>
+    <button onclick="replace()">把所选输入框中内容的a全部替换成另外一个输入框中的内容</button>
+</div>
+<p id="result"></p>
+
+<script>
+
+                      /* Number部分代码 */
+/*
+    var num = document.getElementsByName("math-obj");
+    var a = document.getElementById("num-a");
+    var b = document.getElementById("num-b");
+    var result = document.getElementById("result");
+    function isnumber() {
+        if (isNaN(a.value)||isNaN(b.value)){
+            result.innerHTML = "不对呢"
+        } else {
+            result.innerHTML = "你输入对了呦，是数字君呢"
+        }
+    }
+    function float() {
+        var f=new Number(a.value);
+        result.innerHTML = f.toFixed(b.value);
+    }
+    function add() {
+        if (num[0].checked) {
+            result.innerHTML = Math.abs(a.value);
+        }else  if (num[1].checked){
+            result.innerHTML = Math.abs(b.value);
+        }
+
+    }
+    function ceil() {
+        if (num[0].checked) {
+            result.innerHTML = Math.ceil(a.value);
+        }else  if (num[1].checked){
+            result.innerHTML = Math.ceil(b.value);
+        }
+    }
+    function floor() {
+        if (num[0].checked) {
+            result.innerHTML = Math.floor(a.value);
+        }else  if (num[1].checked){
+            result.innerHTML = Math.floor(b.value);
+        }
+    }
+    function round() {
+        if (num[0].checked) {
+            result.innerHTML = Math.round(a.value);
+        }else  if (num[1].checked){
+            result.innerHTML = Math.round(b.value);
+        }
+    }
+    function max() {
+        result.innerHTML = Math.max(a.value,b.value);
+    }
+    function min() {
+        result.innerHTML = Math.min(a.value,b.value);
+    }
+*/
+          var a = document.getElementById("str-a"),
+              b = document.getElementById("str-b"),
+              arr = document.getElementsByName("str-obj"),
+              A = document.getElementById("num-a"),
+              B = document.getElementById("num-b"),
+              result = document.getElementById("result");
+          function leng() {
+              var s = a.value;
+              if (arr[0].checked){
+                  result.innerHTML = String(s).length;
+              } else if (arr[1].checked){
+                  result.innerHTML = b.value.length;
+              }
+          }
+          function third() {
+              if (arr[0].checked){
+                  result.innerHTML = a.value.charAt(2);
+              } else if (arr[1].checked){
+                  result.innerHTML = b.value.charAt(2);
+              }
+          }
+          function contact() {
+              result.innerHTML = a.value.concat(b.value);
+          }
+          function BA() {
+              result.innerHTML = a.value.indexOf(b.value);
+
+          }
+          function AB() {
+              result.innerHTML = b.value.lastIndexOf(a.value);
+
+          }
+          function slice() {
+              if (arr[0].checked){
+                  result.innerHTML = a.value.slice(A.value,B.value);
+              } else if (arr[1].checked){
+                  result.innerHTML = b.value.slice(A.value,B.value);
+              }
+          }
+          function split() {
+              if (arr[0].checked){
+                  result.innerHTML = a.value.split(/\r*\n/).length;
+              } else if (arr[1].checked){
+                  result.innerHTML = b.value.split(/\r*\n/).length;
+              }
+          }
+          function substr() {
+              if (arr[0].checked){
+                  result.innerHTML = a.value.substr(A.value,B.value);
+              } else if (arr[1].checked){
+                  result.innerHTML = b.value.substr(A.value,B.value);
+              }
+          }
+          function uppercase() {
+              if (arr[0].checked){
+                  result.innerHTML = a.value.toLocaleUpperCase();
+              } else if (arr[1].checked){
+                  result.innerHTML = b.value.toLocaleUpperCase();
+              }
+          }
+          function lowercase() {
+              if (arr[0].checked){
+                  result.innerHTML = a.value.toLocaleLowerCase();
+              } else if (arr[1].checked){
+                  result.innerHTML = b.value.toLocaleLowerCase();
+              }
+          }
+          function trim() {
+              if (arr[0].checked){
+                  result.innerHTML = a.value.replace(/\s*/g,"");
+              } else if (arr[1].checked){
+                  result.innerHTML = b.value.replace(/\s*/g,"");
+              }
+
+          }
+          function replace() {
+              if (arr[0].checked){
+                  result.innerHTML = a.value.replace(/a/,b.value);
+              } else if (arr[1].checked){
+                  result.innerHTML = b.value.replace(/a/,a.value);
+              }
+          }
+
+
+</script>
+</body>
+</html>
