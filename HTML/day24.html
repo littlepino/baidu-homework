@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+/*    var arr = [43, 54, 4, -4, 84, 100, 58, 27, 140];
+    function compare(a,b){
+        return a - b;   //升序排列
+       /!* return b - a;*!/ //降序排列
+    }
+    console.log(arr.sort(compare));*/
+    var arr = ['apple', 'dog', 'cat', 'car', 'zoo', 'orange', 'airplane'];
+    var arr2 = [[10, 14], [16, 60], [7, 44], [26, 35], [22, 63]];
+    function string(a,b) {
+        if (a > b){
+            return 1       //按照a-z顺序排列，反之这是z-a
+        }else if (a < b){
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+console.log(arr.sort(string));
+    /* 按照数组的第二个数，从大到小排列 */
+    function two(a,b) {
+        if (a[1] > b[1]){
+            return -1;
+        } else if (a[1] < b[1]){
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+    console.log(arr2.sort(two));
+var arr3 = [
+    {
+        id: 1,
+        name: 'candy',
+        value: 40
+    }, {
+        id: 2,
+        name: 'Simon',
+        value: 50
+    }, {
+        id: 3,
+        name: 'Tony',
+        value: 45
+    }, {
+        id: 4,
+        name: 'Annie',
+        value: 60
+    }
+];
+function obj(a,b) {
+    return a.value - b.value;
+}
+console.log(arr3.sort(obj));
+</script>
+</body>
+</html>
