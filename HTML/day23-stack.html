@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stack</title>
+</head>
+<body>
+<input id="stack-input" type="text">
+<p id="stack-cont">栈内容：apple-&gt;pear</p>
+<button id="push-btn" onclick="un()">进栈</button>
+<button id="pop-btn" onclick="sh()">退栈</button>
+<button id="font-btn" onclick="console()">打印栈顶元素内容</button>
+<button id="empty-btn" onclick="nul()">判断栈是否为空</button>
+
+<script>
+    /* 栈顶为最后一个元素 */
+   /* var stack = ["apple", "pear"];
+    var x = document.getElementById("stack-input"),
+        y = document.getElementById("stack-cont");
+    function push() {
+        stack.push(x.value);
+        y.innerHTML ="队列内容：" + stack.join("-&gt");
+    }
+    function popo() {
+        stack.pop();
+        y.innerHTML ="队列内容：" + stack.join("-&gt");
+    }
+    function console() {
+        var len = stack.length;
+        y.innerHTML = stack[len-1];
+    }
+    function nul() {
+        var len = stack.length;
+        if (len == 0){
+            y.innerHTML = "该数组是空的，请添加内容";
+        } else {
+            y.innerHTML = "这就是一个数组，快使用其他操作吧";
+        }
+    }*/
+   /* 栈顶为第一个元素 */
+   var stack = ["apple", "pear"];
+   var x = document.getElementById("stack-input"),
+       y = document.getElementById("stack-cont");
+   function un() {
+       stack.unshift(x.value);
+       y.innerHTML = "队列内容：" + stack.join("&gt-");
+   }
+   function sh() {
+       stack.shift();
+       y.innerHTML = "队列内容：" + stack.join("&gt-");
+   }
+   function console() {
+       var len = 0;
+       y.innerHTML = stack[0];
+   }
+   function nul() {
+       var len = stack.length;
+       if (len == 0){
+           y.innerHTML = "该栈是空的，请添加内容";
+       } else {
+           y.innerHTML = "这就是一个栈，快使用其他操作吧";
+       }
+   }
+
+</script>
+</body>
+</html>

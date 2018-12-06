@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="queue-input" type="text">
+<p id="queue-cont">队列内容：apple-&gt;pear</p>
+<button id="in-btn" onclick="un()">入队</button>
+<button id="out-btn" onclick="sh()">出队</button>
+<button id="font-btn" onclick="console()">打印队头元素内容</button>
+<button id="empty-btn" onclick="nul()">判断队列是否为空</button>
+
+<script>
+    /*
+      队头在尾
+    */
+   /* var queue = ["apple", "pear"];
+    var x = document.getElementById("queue-input"),
+        y = document.getElementById("queue-cont");
+   function push() {
+       queue.push(x.value);
+       y.innerHTML ="队列内容：" + queue.join("-&gt");
+   }
+   function popo() {
+       queue.pop();
+       y.innerHTML ="队列内容：" + queue.join("-&gt");
+   }
+   function console() {
+       var len = queue.length;
+       y.innerHTML = queue[len-1];
+   }
+   function nul() {
+       var len = queue.length;
+       if (len == 0){
+           y.innerHTML = "该数组是空的，请添加内容";
+       } else {
+           y.innerHTML = "这就是一个数组，快使用其他操作吧";
+       }
+   }*/
+    var queue = ["apple", "pear"];
+    var x = document.getElementById("queue-input"),
+        y = document.getElementById("queue-cont");
+    function un() {
+        queue.unshift(x.value);
+        y.innerHTML = "队列内容：" + queue.join("&gt-");
+    }
+    function sh() {
+        queue.shift();
+        y.innerHTML = "队列内容：" + queue.join("&gt-");
+    }
+    function console() {
+        var len = 0;
+        y.innerHTML = queue[0];
+    }
+    function nul() {
+        var len = queue.length;
+        if (len == 0){
+            y.innerHTML = "该数组是空的，请添加内容";
+        } else {
+            y.innerHTML = "这就是一个数组，快使用其他操作吧";
+        }
+    }
+
+
+</script>
+</body>
+</html>
