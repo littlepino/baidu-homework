@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>distance</title>
+</head>
+<body>
+<select id="year-select"></select>
+
+<select id="month-select"></select>
+
+<select id="day-select"></select>
+
+<select id="hour-select"></select>
+
+<select id="minite-select"></select>
+
+<select id="second-select"></select>
+
+<p id="result-wrapper"></p>
+
+<script>
+    function appendZero(time) { //给选项框中小于十的数字前 + 0
+        if (time < 10) {
+            return "0" + time;
+        }else {
+            return time;
+        }
+    }
+    function appendOption(sel,day) { //给下路选框添加选项
+        var select = sel,
+            option = document.createElement("option"),
+            text;
+
+        if (select.id == "hour-select" || select.id == "minite-select" || select.id == "second-select") {//选择时、分、秒，然后给小于十的数字前+0
+
+            text = document.createTextNode(appendZero(day));
+        }else {
+            text = document.createTextNode(day);
+        }
+        option.appendChild(text);
+        option.value = day;
+        select.appendChild(option);
+    }
+    function removeOption() {
+        var select = document.getElementById("day-select");
+        for (var i = select.length - 1; i >= 0; i--) {
+            select.remove(select.length-1);
+        }
+    }
+    function yearSelect() {
+        var select = document.getElementById("year-select");
+        for (var i = 2000; i <= 2032; i++) {
+            appendOption(select,i);
+        }
+    }
+    function monthSelect() {
+        var select = document.getElementById("month-select");
+        for (var i = 1; i <= 12; i++) {
+            appendOption(select,i);
+        }
+    }
+    function daySelect() {
+        var select = document.getElementById("day-select"),
+            month = document.getElementById("month-select"),
+            index = month[month.selectedIndex].value;
+        removeOption();//每次需要先清空上次设置的下拉选项框，以便更新月份的时候，下拉选择框能够根据选择月份设置天数
+
+        if (index == 1 || index == 3 || index == 5 || index == 7 || index == 8 || index == 10 || index == 12) {
+            for (var i = 1; i <= 31; i++) {
+                appendOption(select,i);
+            }
+        }
+        if (index == 4 || index == 6 || index == 9 || index == 11) {
+            for (var i = 1; i <= 30; i++) {
+                appendOption(select,i);
+            }
+        }
+        if (index == 2) {
+            var year = document.getElementById("year-select"),
+                yearIndex = year[year.selectedIndex].value;
+            if ((yearIndex%4 == 0 && yearIndex%100 != 0) || yearIndex%400 == 0) {
+                for (var i = 1; i <= 29; i++) {       //闰月和闰年设置
+                    appendOption(select,i);
+                }
+            }else {
+                for (var i = 1; i <= 28; i++) {
+                    appendOption(select,i);
+                }
+            }
+        }
+    }
+
+    function hourSelect() {
+        var select = document.getElementById("hour-select");
+        for (var i = 0; i <= 23; i++) {
+            appendOption(select,i);
+        }
+    }
+    function minuteSelect() {
+        var select = document.getElementById("minite-select");
+        for (var i = 0; i <= 59; i++) {
+            appendOption(select,i);
+        }
+    }
+    function secondSelect() {
+        var select = document.getElementById("second-select");
+        for (var i = 0; i <= 59; i++) {
+            appendOption(select,i);
+        }
+    }
+    yearSelect();
+    monthSelect();
+    daySelect();
+    hourSelect();
+    minuteSelect();
+    secondSelect();
+    document.getElementById("year-select").addEventListener("change",daySelect);
+    document.getElementById("month-select").addEventListener("change",daySelect);
+
+
+        function main() {
+            /* 获取所选框中间的值 */
+            var p = document.getElementById("result-wrapper"),
+                year = document.getElementById("year-select"),
+                month = document.getElementById("month-select"),
+                day = document.getElementById("day-select"),
+                hour = document.getElementById("hour-select"),
+                minite = document.getElementById("minite-select"),
+                second = document.getElementById("second-select"),
+                yIndex = year.selectedIndex,
+                moIndex = month.selectedIndex,
+                dIndex = day.selectedIndex,
+                hIndex = hour.selectedIndex,
+                miIndex = minite.selectedIndex,
+                sIndex = second.selectedIndex;
+            var week = new Date(year.options[yIndex].value,month.value,day.value,hour.value,
+                minite.value,second.value);//当前select的值和选中option的值相同
+            /* 用变量获取当前时间 */
+            var today = new Date();
+            var d = today.getDate();//天
+            var h = today.getHours();//小时
+            var m = today.getMinutes();//分钟
+            var s = today.getSeconds();//秒
+            var mon = today.getMonth() + 1;//月份
+            var y = today.getFullYear();//年
+            // 给小于10的数字前面加上0
+            month = checkTime(month);
+            m = checkTime(m);
+            s = checkTime(s);
+
+            /* 计算当前时间与原来时间的差值 */
+            var ys = parseInt(y) - parseInt(year.options[yIndex].value);
+            /* 当前时间大于所选时间 */
+            if (ys >= 0){
+                fromNow();
+            }else {
+                toTorrow();
+            }
+             function fromNow() {
+                 var mos = parseInt(mon) - parseInt(month.options[moIndex].value);
+                 var ds = parseInt(d) - parseInt(day.options[dIndex].value);
+                 var hs = parseInt(h) - parseInt(hour.options[hIndex].value);
+                 var mis = parseInt(m) - parseInt(minite.options[miIndex].value);
+                 var ss = parseInt(s) - parseInt(second.options[sIndex].value);
+
+                 if (mis > 0 && ss <0){
+                     mis = mis - 1;
+                     ss = parseInt(second.options[sIndex].value) -parseInt(s) + 60;
+                 }  else if (mis < 0 && ss < 0){
+                     mis = parseInt(minite.options[miIndex].value) - parseInt(m) + 60 -1;
+                     ss = parseInt(second.options[sIndex].value) - parseInt(s) + 60;
+                     console.log(mis);
+                 }
+                 /* 小时和分钟 */
+                 if (hs > 0 && mis <0){
+                     hs = hs -1;
+                     mis = parseInt(m) - parseInt(minite.options[miIndex].value) + 60;
+                 } else if (hs <0 && mis <0){
+                     hs = parseInt(h) - parseInt(hour.options[hIndex].value) + 24 - 1;
+                     mis = parseInt(m) - parseInt(minite.options[miIndex].value) + 60;
+                 }
+                 /* 日和小时 */
+                 if (ds > 0 && hs <0){
+                     ds = ds - 1;
+                     hs = parseInt(h) - parseInt(hour.options[hIndex].value) + 24;
+                 }else if (ds < 0 && hs < 0){
+                     ds = parseInt(d) - parseInt(day.options[dIndex].value) + day.options.length -1;
+                     hs = parseInt(h) - parseInt(hour.options[hIndex].value) + 24;
+                 }
+                 /* 月日 */
+                 if(mos < 0 && ds < 0){
+                     mos = parseInt(mon) - parseInt(month.options[moIndex].value) + 12 -1;
+                     ds = parseInt(d) - parseInt(day.options[dIndex].value) + day.options.length;
+                 }else if (mos > 0 && ds <0){
+                     mos = mos-1;
+                     ds = parseInt(d) - parseInt(day.options[dIndex].value) + 30;
+                 }else if (mos == 0 && ds < 0){
+                     ds = parseInt(d) - parseInt(day.options[dIndex].value) + 30
+                 }
+                 /* 年月 */
+               if (ys > 0 && mos <0){
+                     ys = ys-1;
+                     mos = parseInt(mon) - parseInt(month.options[moIndex].value) + 12;
+                 }
+                 p.innerHTML = "现在距离 " + year.options[yIndex].text + "年" + month.options[moIndex].text + "月"
+                     + day.options[dIndex].text + "日" + hour.options[hIndex].text + ":"
+                     + minite.options[miIndex].text + ":" + second.options[sIndex].text + getWeek(week) + "已经过去"
+                     + ys + "年" + mos + "月" +ds + "日" + hs + "时" + mis + "分"+ ss + "秒";
+                 setTimeout('main()',1000)
+             }
+             function toTorrow() {
+                 var mos = parseInt(month.options[moIndex].value) - parseInt(mon);
+                 var ds  = parseInt(day.options[dIndex].value) - parseInt(d);
+                 var hs  = parseInt(hour.options[hIndex].value) - parseInt(h);
+                 var mis = parseInt(minite.options[miIndex].value) - parseInt(m);
+                 var ss  = parseInt(second.options[sIndex].value) - parseInt(s);
+
+                 /*先统一按一个月30天来算*/
+                 /* 年月 */
+                 if (ys <0 && mos < 0){
+                     ys = -ys - 1;
+                     mos = parseInt(month.options[moIndex].value) - parseInt(mon) + 12;
+                 }else if (ys < 0){
+                     ys = -ys;
+                 }
+                 /* 月日 */
+                 if(mos < 0 && ds < 0){
+                     mos = parseInt(month.options[moIndex].value) - parseInt(mon) + 12 -1;
+                     ds  = parseInt(day.options[dIndex].value) - parseInt(d) + 30;
+                 }else if (mos > 0 && ds <0){
+                     ds = parseInt(day.options[dIndex].value) - parseInt(d) + 30;
+                 }else if (mos == 0 && ds < 0){
+                     ds = parseInt(day.options[dIndex].value) - parseInt(d) + 30
+                 }
+                 /* 日和小时 */
+                 if (ds > 0 && hs <0){
+                     ds = ds-1;
+                     hs = parseInt(hour.options[hIndex].value) - parseInt(h) + 24;
+                 }else if (ds < 0 && hs < 0){
+                     ds = parseInt(day.options[dIndex].value) - parseInt(d) + 30 -1;
+                     hs = parseInt(hour.options[hIndex].value) - parseInt(h) + 24;
+                 }
+                 /* 小时和分钟 */
+                 if (hs > 0 && mis <0){
+                     hs = hs -1;
+                     mis = parseInt(minite.options[miIndex].value) - parseInt(m) + 60;
+                 } else if (hs <0 && mis <0){
+                     hs = parseInt(hour.options[hIndex].value) - parseInt(h) + 24 - 1;
+                     mis = parseInt(minite.options[miIndex].value) - parseInt(m) + 60;
+                     console.log(hs);
+                 }
+                 //分和秒
+                 if (mis > 0 && ss <0){
+                     ss = parseInt(second.options[sIndex].value) -parseInt(s) + 60;
+                 }  else if (mis < 0 && ss < 0){
+                     mis = parseInt(minite.options[miIndex].value) - parseInt(m) + 60 -1;
+                     ss = parseInt(second.options[sIndex].value) - parseInt(s) + 60;
+                 }
+                 p.innerHTML = "现在距离 " + year.options[yIndex].text + "年" + month.options[moIndex].text + "月"
+                     + day.options[dIndex].text + "日" + hour.options[hIndex].text + ":"
+                     + minite.options[miIndex].text + ":" + second.options[sIndex].text +getWeek(week)+ "还有"
+                     + ys + "年" + mos + "月" +ds + "日" + hs + "时" + mis + "分"+ ss + "秒";
+                 setTimeout('main()',1000)
+             }
+
+        }
+    function getWeek(date) {
+        var myDate = date;
+        var weekday = {
+            "0" : "星期日",
+            "1" : "星期一",
+            "2" : "星期二",
+            "3" : "星期三",
+            "4" : "星期四",
+            "5" : "星期五",
+            "6" : "星期六"
+        };
+        return weekday[myDate.getDay()];
+    }
+        function checkTime(i)
+        {
+            if (i<10)
+            {i="0" + i}
+            return i
+        }
+
+    main();
+</script>
+</body>
+</html>
