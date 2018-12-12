@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>time</title>
+</head>
+<body>
+<h3>当前的时间是</h3>
+<p id="txt"></p>
+<p id="two"></p>
+<script>
+    function week() {
+        var d=new Date();
+        var w=new Array(7);
+        w[0]="星期日",
+        w[1]="星期一",
+        w[2]="星期二",
+        w[3]="星期三",
+        w[4]="星期四",
+        w[5]="星期五",
+        w[6]="星期六";
+        return w[d.getDay()];
+    }
+
+    function startTime()
+    {
+        var today = new Date();
+        var d = today.getDate();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        var month = today.getMonth();
+        var y = today.getFullYear();
+            // 给小于10的数字前面加上0
+        month = checkTime(month);
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML = y + "年" + month + "月"+ d + "日"+ week() + h + ":" + m + ":" + s;
+        t=setTimeout('startTime()',500)
+    }
+    startTime();
+
+    function checkTime(i)
+    {
+        if (i<10)
+        {i="0" + i}
+        return i
+    }
+    function weekTwo() {
+        var d=new Date();
+        var w=new Array(7);
+            w[0]="Sunday",
+            w[1]="Monday",
+            w[2]="Tuesday",
+            w[3]="Wednesday",
+            w[4]="Thursday",
+            w[5]="Friday",
+            w[6]="Saturday";
+        return w[d.getDay()];
+    }
+    function startTimeTwo()
+    {
+        var today = new Date();
+        var d = today.getDate();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        var month = today.getMonth();
+        var y = today.getFullYear();
+        // 给小于10的数字前面加上0
+        month = checkTime(month);
+        m = checkTime(m);
+        s = checkTime(s);
+        if (parseInt(h) < 12){
+            document.getElementById('two').innerHTML = y + "-" + month + "-"+ d + " "+ weekTwo() + h + ":" + m + ":" + s + "am";
+        } else {
+            document.getElementById('two').innerHTML = y + "-" + month + "-"+ d + " "+ weekTwo() + h + ":" + m + ":" + s + " pm";
+        }
+
+        t=setTimeout('startTimeTwo()',500)
+    }
+    startTimeTwo();
+</script>
+</body>
+</html>
