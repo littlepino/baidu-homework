@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #email-input{
+            width: 300px;
+            height: 30px;
+        }
+        .email-sug{
+            width: 300px;
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+            border: 2px solid rgba(134, 132, 132,0.3);
+            border-top:none;
+            display: none;
+            /* 初始不显示，避免边框出现 */
+        }
+        .email-sug li{
+            width: 300px;
+            height: 30px;
+            background-color: #ffffff;
+            color: darkgrey;
+            line-height: 30px;
+        }
+        .email-sug li:hover{
+            background-color:pink;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <input id="email-input" type="text" >
+    <ul id="email-sug-wrapper" class="email-sug"></ul>
+</div>
+<script>
+    var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+    var txt = document.getElementById("email-input");
+    var sug = document.getElementById("email-sug-wrapper");
+    sug.addEventListener("click",function (ev) {
+        //采用事件代理，监听父级点击事件，通过target获取当前li
+        var ev = ev||window.event;
+        var target = ev.target||ev.srcElement; //target和srcElement都是返回当前事件的节点
+        if (target.nodeName.toLowerCase()=="li"){//nodeName属性可依据节点的类型返回其名称,元素节点返回标签名，属性接节点返回属性名
+            hide();
+            return txt.value = htmlDecode(target.innerHTML);//解码，是为了某些转义字符无法识别
+        }
+    })
+    txt.oninput = function () {
+        console.log("event handle4")
+        judge();
+        add();
+    }
+    function getText() {
+        var inputText = txt.value.trim();//去除两端空格
+        return inputText;
+    }
+    //判断是否生成新的数组
+    function postlist() {
+        var userinput = getText();
+        var newpostlist = new Array();
+        if (userinput.search('@') != 0){
+            var len = userinput.search("@");
+            //用来拼接的用户输入内容 = 只使用@之后的字符串
+            var x = userinput.substring(len +1,userinput.length);//取@之后的部分,substring提取参数之间的字符
+            for (var i = 0;i < postfixList.length;i++){
+                if (postfixList[i].search(x) == 0){
+                    newpostlist.push(postfixList[i]);
+                }
+            }
+            //若@后面没有字符或者新数组newpostList为空，就返回原来的postfixList
+            if (x  === ''||newpostlist == ''){
+                return postfixList;
+            }
+            return newpostlist;
+        }else {
+            return postfixList;
+        }
+    }
+    //根据输入内容和匹配来生成提示数组
+    function promptContent() {
+        var x = htmlEncode(getText())//转码
+        // var x = getText();原代码
+        var tips = new Array();
+        if (x.indexOf("@") != -1){//indexOf返回检索字符串第一次出现的位置，若果没有就返回-1
+            var p = x.slice(0, x.indexOf("@"));//slice提取字符串片断，并返回被提取的部分
+            for (var i = 0;i < postlist().length;i++){
+                tips[i] = p + "@" + postlist()[i];
+            }
+        } else {
+            for (var i =0;i < postfixList.length;i++){
+                tips[i] = x + "@" + postfixList[i];
+            }
+        }
+        return tips;
+    }
+    //添加提示数组进入li
+    function add() {
+        var sug = document.getElementById("email-sug-wrapper");
+        var tips = promptContent();
+        while (sug.hasChildNodes()){
+            sug.removeChild(sug.firstChild);
+        }
+        //将之前的列表清除掉，然后重新生成新的列表
+        for (var i = 0;i < tips.length;i++){
+            var tip_li = document.createElement("li");
+            tip_li.innerHTML = tips[i];
+            sug.appendChild(tip_li);
+        }
+    }
+    function judge() {
+        //判空，是''没有内容，不能为" "
+        if (getText() ==""){
+            hide()
+        } else {
+            display();
+        }
+    }
+    function hide() {
+        sug.style.display = "none";
+    }
+    function display() {
+        sug.style.display = "block";
+    }
+    /* 1.用浏览器内部转换器实现html转码 */
+    function htmlEncode(html) {
+        //1.首先动态创建一个容器标签元素，如DIV
+        var temp = document.createElement("div");
+        //2.然后将要转换的字符串设置为这个元素的innerText(ie支持)或者textContent(火狐，google支持)
+        (temp.textContent != undefined)?(temp.textContent = html):(temp.innerText = html);
+        //3.最后返回这个元素innerHtml,即得到经过 HTML编码转换的字符串了
+        var output = temp.innerHTML;
+        temp = null;
+        return output;
+    }
+    /* 用浏览器内部转换器实现html解码 */
+    function htmlDecode(text) {
+        //1.首先动态你创建一个容器标签，如DIV
+        var temp = document.createElement("div");
+        //2.然后将要转换的字符串设置为这个元素的innerHTML(ie,火狐，google都支持)
+        temp.innerHTML = text;
+        //3.最后返回这个元素的innerText(ie支持)或者textContent(火狐，google支持),即得到经过HTML解码的字符串了。
+        var output = temp.innerHTML;
+        temp = null;
+        return output;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="wrapper">
+    <input id="email-input" type="text" >
+    <ul id="email-sug-wrapper" class="email-sug"></ul>
+</div>
+
+    <script>
+        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+        var txt = document.getElementById("email-input");
+        var sug = document.getElementById("email-sug-wrapper");
+        txt.oninput = function () {
+           console.log("event handle4");
+           judge();
+           add();
+        }
+        function getText() {
+            var inputText = txt.value.trim();
+            return inputText;
+        }
+        //判断是否生成新的数组
+        function postlist() {
+            var userinput = getText();
+            var newpostlist = new Array();
+            if (userinput.search('@') != 0){
+                var len = userinput.search('@');
+                //用来拼接的用户输入内容 = 只使用@之后的字符串
+                var x = userinput.substring(len + 1,userinput.length);//取@之后的部分
+                for (var i = 0; i < postfixList.length; i++){
+                    if (postfixList[i].search(x) == 0){
+                        newpostlist.push(postfixList[i]);
+                    }
+                }
+                //若@后面没有字符或者新数组newspostlist为空，就返回原来的postfixlist
+                if (x === ''|| newpostlist == ''){
+                    return postfixList;
+                }
+                return newpostlist;
+            }else {
+                return postfixList
+            }
+        }
+        //根据输入内容和匹配来生成提示数组
+        function promptContent() {
+            var x = getText();
+            var tips = new Array();
+            if (x.indexOf("@") != -1){
+                var p = x.slice(0,x.indexOf("@"));
+                for (var i = 0;i < postlist().length; i++){
+                    tips[i] = p + "@" + postlist()[i];
+                }
+            }else {
+                for (var i = 0; i < postfixList.length; i++) {
+                    tips[i] = x + "@" + postfixList[i];
+                }
+            }
+            return tips;
+        }
+        //添加提示数组进入li
+        function add() {
+            var sug = document.getElementById("email-sug-wrapper");
+            var tips = promptContent();
+            while(sug.hasChildNodes()){
+                sug.removeChild(sug.firstChild);
+            }//将之前的列表清除掉，然后重新生成新的列表
+            for (var i = 0;i < tips.length;i++){
+                var tip_li = document.createElement("li");
+                tip_li.innerHTML = tips[i];
+                sug.appendChild(tip_li);
+            }
+        }
+        function judge() {
+            //判断，是""没有内容，不能为" "
+            if (getText() == ""){
+                hide();
+            } else {
+                display();
+            }
+        }
+        function hide() {
+            sug.style.display = "none";
+        }
+        function display() {
+            sug.style.display = "block";
+        }
+
+    </script>
+</div>
+</body>
+</html>
